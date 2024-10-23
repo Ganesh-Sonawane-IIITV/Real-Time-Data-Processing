@@ -5,6 +5,7 @@
 The Real-Time Data Processing System is designed to monitor and analyze weather data in real time. It aggregates weather information, generates daily summaries, and triggers alerts based on user-defined thresholds. This project serves as a powerful tool for understanding weather patterns and receiving timely notifications of significant changes in weather conditions.
 
 ## Project Structure
+```bash
 Real-Time Data Processing System/
 │
 ├── config/
@@ -27,7 +28,7 @@ Real-Time Data Processing System/
 ├── app.py                         # Main application entry point for Flask
 ├── main.py                        # Entry point for running the weather monitoring logic
 └── requirements.txt               # List of dependencies for the project
-
+```
 
 
 ## Features
@@ -74,7 +75,7 @@ Real-Time Data Processing System/
 
 ## Screenshots
 ###current weather data
-![Current Weather Data](Real-Time Data Processing System/Images/current weather data.png)  
+![Current Weather Data](Real-Time Data Processing System/Images/current_weather_data.png)  
 *Displays the most recent weather data fetched from the API.*
 
 ###Daily Weather Summary
