@@ -76,14 +76,14 @@ Real-Time Data Processing System/
 ## Screenshots
 
 ### Current Weather Data
-![Current Weather Data](Real-Time Data Processing System/Images/current_weather_data.png)  
+![Current Weather Data](Real-Time-Data-Processing/Images/current_weather_data.png)  
 *Displays the most recent weather data fetched from the API.*
 
 ### Daily Weather Summary
-![Daily Weather Summary](Real-Time Data Processing System/Images/daily_weather_summary.png)  
+![Daily Weather Summary](Real-Time-Data-Processing/Images/daily_weather_summary.png)  
 *Shows the daily weather summary, including average, maximum, and minimum temperatures.*
 *Illustrates alerts triggered based on predefined temperature thresholds.*
 
 ### Temperature Trends
-![Temperature Trends](Real-Time Data Processing System/Images/temperature_trends.png)  
+![Temperature Trends](Real-Time-Data-Processing/Images/temperature_trends.png)  
 *Visual representation of temperature trends over time, highlighting changes in weather patterns.*
