@@ -74,15 +74,16 @@ Real-Time Data Processing System/
    Open your web browser and navigate to ```http://127.0.0.1:5000/```
 
 ## Screenshots
-###current weather data
+
+### Current Weather Data
 ![Current Weather Data](Real-Time Data Processing System/Images/current_weather_data.png)  
 *Displays the most recent weather data fetched from the API.*
 
-###Daily Weather Summary
-![Daily Weather Summary](Real-Time Data Processing System/Images/daily_weather_summary and weather alerts.png)  
+### Daily Weather Summary
+![Daily Weather Summary](Real-Time Data Processing System/Images/daily_weather_summary.png)  
 *Shows the daily weather summary, including average, maximum, and minimum temperatures.*
 *Illustrates alerts triggered based on predefined temperature thresholds.*
 
-###Temperature Trends
-![Temperature Trends](Real-Time Data Processing System/Images/temperature trends.png)  
+### Temperature Trends
+![Temperature Trends](Real-Time Data Processing System/Images/temperature_trends.png)  
 *Visual representation of temperature trends over time, highlighting changes in weather patterns.*
