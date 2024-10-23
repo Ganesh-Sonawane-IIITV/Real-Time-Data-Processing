@@ -5,7 +5,29 @@
 The Real-Time Data Processing System is designed to monitor and analyze weather data in real time. It aggregates weather information, generates daily summaries, and triggers alerts based on user-defined thresholds. This project serves as a powerful tool for understanding weather patterns and receiving timely notifications of significant changes in weather conditions.
 
 ## Project Structure
-Real-Time Data Processing System /config/config.py # Configuration settings for the application /db/create_tables.py # Script to create necessary database tables /src/fetch_weather.py # Module to fetch weather data from the API /src/process_data.py # Module to process and analyze weather data /src/visualize.py # Module to visualize weather data and summaries /static/css/style.css # CSS styles for the web application /static/js/script.js # JavaScript for front-end functionality /templates/index.html # HTML template for the main web interface /app.py # Main application logic and API endpoints /main.py # Entry point for running the application /requirements.txt # List of dependencies required for the project
+Real-Time Data Processing System/
+│
+├── config/
+│   └── config.py                  # Configuration file for database connection
+├── db/
+│   └── create_tables.py           # Script for creating the PostgreSQL tables
+├── src/
+│   ├── fetch_weather.py           # Fetches current weather data from API
+│   ├── process_data.py            # Processes weather data for summaries and alerts
+│   └── visualize.py                # Handles data visualization for trends and summaries
+├── static/
+│   ├── css/
+│   │   └── style.css              # CSS file for styling the UI
+│   └── js/
+│       └── script.js              # JavaScript file for client-side logic
+├── templates/
+│   ├── index.html                 # Main UI template for displaying weather data
+│   ├── daily_weather_summary.html  # Template for displaying daily weather summaries
+│   └── weather_alerts.html        # Template for displaying weather alerts
+├── app.py                         # Main application entry point for Flask
+├── main.py                        # Entry point for running the weather monitoring logic
+└── requirements.txt               # List of dependencies for the project
+
 
 
 ## Features
@@ -50,13 +72,16 @@ Real-Time Data Processing System /config/config.py # Configuration settings for 
 5. **Access the application:**
    Open your web browser and navigate to ```http://127.0.0.1:5000/```
 
-## output
+## Screenshots
+###current weather data
 ![Current Weather Data](Real-Time Data Processing System/Images/current weather data.png)  
 *Displays the most recent weather data fetched from the API.*
 
+###Daily Weather Summary
 ![Daily Weather Summary](Real-Time Data Processing System/Images/daily_weather_summary and weather alerts.png)  
 *Shows the daily weather summary, including average, maximum, and minimum temperatures.*
 *Illustrates alerts triggered based on predefined temperature thresholds.*
 
+###Temperature Trends
 ![Temperature Trends](Real-Time Data Processing System/Images/temperature trends.png)  
 *Visual representation of temperature trends over time, highlighting changes in weather patterns.*
