@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Weather Monitoring Dashboard</h1>
+
+        <!-- Weather Data Section -->
+        <h2>Current Weather Data</h2>
+        <table>
+            <tr>
+                <th>City</th>
+                <th>Temperature (°C)</th>
+                <th>Feels Like (°C)</th>
+                <th>Condition</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for data in weather_data %}
+            <tr>
+                <td>{{ data[0] }}</td>
+                <td>{{ "%.2f"|format(data[1]) }}</td>
+                <td>{{ "%.2f"|format(data[2]) }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Daily Summary Section -->
+        <h2>Daily Weather Summary</h2>
+        <table>
+            <tr>
+                <th>City</th>
+                <th>Avg Temp (°C)</th>
+                <th>Max Temp (°C)</th>
+                <th>Min Temp (°C)</th>
+                <th>Date</th>
+            </tr>
+            {% for summary in daily_summary %}
+            <tr>
+                <td>{{ summary[0] }}</td>
+                <td>{{ "%.2f"|format(summary[1]) }}</td>
+                <td>{{ "%.2f"|format(summary[2]) }}</td>
+                <td>{{ "%.2f"|format(summary[3]) }}</td>
+                <td>{{ summary[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+        <!-- Add this section below the Daily Summary Section -->
+
+        <!-- Alerts Section -->
+        <h2>Alerts</h2>
+        {% if alerts %}
+        <ul>
+            {% for alert in alerts %}
+            <li><strong>{{ alert[0] }}</strong> has exceeded 30°C for {{ alert[1] }} consecutive updates.</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No alerts at the moment.</p>
+        {% endif %}
+
+
+        <!-- Temperature Trends Chart -->
+        <h2>Temperature Trends</h2>
+        <canvas id="tempChart" width="400" height="200"></canvas>
+    </div>
+    <script>
+        // Fetch weather data for the chart dynamically from the API
+        fetch('/api/weather_data')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('tempChart').getContext('2d');
+
+                // Create the chart
+                const tempChart = new Chart(ctx, {
+                    type: 'line', // Use bar chart for city vs temperature
+                    data: {
+                        labels: data.cities, // Use city names as labels
+                        datasets: [{
+                            label: 'Temperature (°C)',
+                            data: data.temperatures, // Use temperatures as data
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Temperature (°C)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Cities'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    </script>
+    <!-- <script>
+        // Fetch data for the chart dynamically from the API
+        fetch('/api/daily_summary')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('tempChart').getContext('2d');
+
+                // Create the chart
+                const tempChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.cities, // Use city names as labels
+                        datasets: [{
+                            label: 'Average Temperature (°C)',
+                            data: data.avg_temps, // Use average temperatures as data
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching daily summary:', error));
+
+        // Optionally, implement auto-refresh for the chart data
+        setInterval(function() {
+            fetch('/api/daily_summary')
+                .then(response => response.json())
+                .then(data => {
+                    tempChart.data.labels = data.cities;
+                    tempChart.data.datasets[0].data = data.avg_temps;
+                    tempChart.update();
+                })
+                .catch(error => console.error('Error fetching updated summary:', error));
+        }, 300000); // Refresh every 5 minutes
+    </script> -->
+
+</body>
+
+</html>
