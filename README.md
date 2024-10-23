@@ -68,7 +68,7 @@ Real-Time Data Processing System/
    Run ```create_tables.py``` to set up the necessary database tables.
 4. **Run the application:**
    ```bash
-   python main.py
+   python app.py
    ```
 5. **Access the application:**
    Open your web browser and navigate to ```http://127.0.0.1:5000/```
